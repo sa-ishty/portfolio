@@ -7,6 +7,7 @@ import { ExtLink } from "@/components/ext-link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data";
+import { asset } from "@/lib/utils";
 
 const boot = [
   "Booting IOS-XE (ishty-portfolio) ...",
@@ -78,7 +79,7 @@ export function Hero() {
           <div className="absolute -inset-3 rounded-2xl border border-dashed border-border" aria-hidden />
           <div className="relative overflow-hidden rounded-xl border border-border bg-card">
             <Image
-              src="/images/portrait.webp"
+              src={asset("/images/portrait.webp")}
               alt="Portrait of Shahriar Adnan Ishty in a dark shirt, standing beside a rooftop pool"
               width={640}
               height={800}

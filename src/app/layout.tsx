@@ -16,7 +16,8 @@ const description =
   "Shahriar Adnan Ishty: network engineer intern at AIUB working where networking, security and AI meet. Projects, research, photography and contact.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(profile.siteUrl),
+  // Next adds the base path itself, so only the origin goes here.
+  metadataBase: new URL(new URL(profile.siteUrl).origin),
   title: {
     default: `${profile.name} · Network Engineer`,
     template: `%s · ${profile.name}`,
@@ -27,7 +28,6 @@ export const metadata: Metadata = {
     siteName: profile.name,
     title: `${profile.name} · Network Engineer`,
     description,
-    url: "/",
   },
   twitter: { card: "summary_large_image" },
 };

@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import type { Photo } from "@/data";
+import { asset } from "@/lib/utils";
 
 export function GalleryGrid({ photos }: { photos: Photo[] }) {
   const [index, setIndex] = useState<number | null>(null);
@@ -48,7 +49,7 @@ export function GalleryGrid({ photos }: { photos: Photo[] }) {
               aria-label={`Open photo: ${photo.alt}`}
             >
               <Image
-                src={photo.src}
+                src={asset(photo.src)}
                 alt={photo.alt}
                 width={photo.width}
                 height={photo.height}
@@ -72,7 +73,7 @@ export function GalleryGrid({ photos }: { photos: Photo[] }) {
         {current && (
           <figure className="flex h-[100dvh] w-screen flex-col items-center justify-center gap-3 p-4">
             <Image
-              src={current.src}
+              src={asset(current.src)}
               alt={current.alt}
               width={current.width}
               height={current.height}

@@ -2,7 +2,7 @@
 
 Personal portfolio of Shahriar Adnan Ishty, network engineer intern at the AIUB IT Department. The site reads like a Cisco console: every section opens with the IOS command that would show it.
 
-Built with Next.js (App Router), TypeScript, Tailwind CSS and shadcn/ui. Hosted on Vercel.
+Built with Next.js (App Router), TypeScript, Tailwind CSS and shadcn/ui. Live at https://sa-ishty.github.io/portfolio/ (GitHub Pages).
 
 ## Run it locally
 
@@ -41,4 +41,6 @@ Colors come from [this palette](https://coolors.co/palette/0d1b2a-1b263b-415a77-
 
 ## Deploy
 
-Import this repo at [vercel.com/new](https://vercel.com/new). Vercel detects Next.js, so the defaults work. Every push to `main` redeploys.
+Every push to `main` builds a static export and publishes it to GitHub Pages (`.github/workflows/deploy.yml`). The workflow sets `PAGES_BASE_PATH=/portfolio` because Pages serves the site from that subfolder.
+
+To host on Vercel or Cloudflare Pages instead, import the repo there and leave `PAGES_BASE_PATH` unset. Then update `siteUrl` in `src/data/profile.json`.

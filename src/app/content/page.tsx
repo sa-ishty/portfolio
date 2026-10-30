@@ -10,6 +10,7 @@ import { Todo } from "@/components/todo";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { content, profile } from "@/data";
+import { asset } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Content",
@@ -58,7 +59,7 @@ export default function ContentPage() {
               <li key={v.url}>
                 <ExtLink href={v.url} className="group block overflow-hidden rounded-xl border border-border bg-card">
                   <div className="relative aspect-video">
-                    <Image src={v.thumbnail} alt="" fill sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw" className="object-cover transition-transform group-hover:scale-105" />
+                    <Image src={v.thumbnail.startsWith("/") ? asset(v.thumbnail) : v.thumbnail} alt="" fill sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw" className="object-cover transition-transform group-hover:scale-105" />
                     <PlayCircle className="absolute inset-0 m-auto size-12 text-white/90 drop-shadow" aria-hidden />
                   </div>
                   <p className="p-4 text-sm font-medium">{v.title}</p>
