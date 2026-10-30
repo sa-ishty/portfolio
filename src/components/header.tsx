@@ -49,7 +49,7 @@ export function Header() {
                   href={item.href}
                   className={cn(
                     "rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent hover:text-foreground",
-                    isActive(item.href) ? "text-foreground" : "text-muted-foreground"
+                    isActive(item.href) ? "text-foreground" : "text-muted-foreground",
                   )}
                   aria-current={isActive(item.href) ? "page" : undefined}
                 >
@@ -86,7 +86,7 @@ export function Header() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     "block rounded-md px-3 py-3 font-mono text-sm hover:bg-accent",
-                    isActive(item.href) ? "text-foreground" : "text-muted-foreground"
+                    isActive(item.href) ? "text-foreground" : "text-muted-foreground",
                   )}
                 >
                   <span className="text-highlight">&gt; </span>

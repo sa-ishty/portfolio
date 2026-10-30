@@ -6,9 +6,12 @@ import { CopyEmail } from "@/components/copy-email";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import { ExtLink } from "@/components/ext-link";
 import { Hero } from "@/components/hero";
+import { Marquee } from "@/components/marquee";
 import { ProjectCard } from "@/components/project-card";
 import { Section } from "@/components/section";
 import { StatusTable } from "@/components/status-table";
+import { Tilt } from "@/components/tilt";
+import { Topology } from "@/components/topology";
 import { Todo } from "@/components/todo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -21,16 +24,23 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Marquee items={skills.groups.flatMap((g) => g.items.slice(0, 4))} />
       <Container>
         <Section id="focus" command="show interfaces status" title="Focus areas">
-          <StatusTable />
+          <div className="grid gap-6">
+            <Topology />
+            <StatusTable />
+          </div>
         </Section>
 
         <Section id="experience" command="show experience" title="Experience and education">
-          <ol className="relative space-y-8 border-l border-border pl-6">
+          <ol className="stagger relative space-y-8 border-l border-border pl-6">
             {experience.map((job) => (
               <li key={job.title} className="relative">
-                <span className="absolute -left-[31px] top-1.5 size-3 rounded-full border-2 border-background bg-up" aria-hidden />
+                <span
+                  className="absolute -left-[31px] top-1.5 size-3 rounded-full border-2 border-background bg-up"
+                  aria-hidden
+                />
                 <p className="font-mono text-xs text-muted-foreground">{job.period}</p>
                 <h3 className="mt-1 text-xl font-semibold">{job.title}</h3>
                 <p className="text-muted-foreground">
@@ -44,12 +54,19 @@ export default function Home() {
                     ))}
                   </ul>
                 )}
-                {job.todo && <div className="mt-3"><Todo>{job.todo}</Todo></div>}
+                {job.todo && (
+                  <div className="mt-3">
+                    <Todo>{job.todo}</Todo>
+                  </div>
+                )}
               </li>
             ))}
             {education.map((ed) => (
               <li key={ed.degree} className="relative">
-                <span className="absolute -left-[31px] top-1.5 size-3 rounded-full border-2 border-background bg-highlight" aria-hidden />
+                <span
+                  className="absolute -left-[31px] top-1.5 size-3 rounded-full border-2 border-background bg-highlight"
+                  aria-hidden
+                />
                 <p className="font-mono text-xs text-muted-foreground">{ed.period}</p>
                 <h3 className="mt-1 flex items-center gap-2 text-xl font-semibold">
                   <GraduationCap className="size-5 text-highlight" aria-hidden />
@@ -71,39 +88,46 @@ export default function Home() {
         </Section>
 
         <Section id="research" command="show research" title="Research">
-          <div className="grid gap-4">
+          <div className="stagger grid gap-4">
             {research.map((r, i) => (
-              <Card key={r.title}>
-                <CardHeader>
-                  <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-                    <span className="text-highlight">[{String(i + 1).padStart(2, "0")}]</span>
-                    <span className="text-muted-foreground">{r.type}</span>
-                    <Badge variant="learning">{r.status}</Badge>
+              <Tilt key={r.title} max={4}>
+                <Card>
+                  <CardHeader>
+                    <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+                      <span className="text-highlight">[{String(i + 1).padStart(2, "0")}]</span>
+                      <span className="text-muted-foreground">{r.type}</span>
+                      <Badge variant="learning">{r.status}</Badge>
+                    </div>
+                    <CardTitle className="text-lg sm:text-xl">{r.title}</CardTitle>
+                    <CardDescription className="text-base">{r.summary}</CardDescription>
+                  </CardHeader>
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <ul className="flex flex-wrap gap-1.5" aria-label="Topics">
+                      {r.tags.map((t) => (
+                        <li key={t}>
+                          <Badge variant="outline" className="font-mono">
+                            {t}
+                          </Badge>
+                        </li>
+                      ))}
+                    </ul>
+                    {r.link && (
+                      <ExtLink
+                        href={r.link}
+                        className="inline-flex items-center gap-1 font-mono text-sm hover:underline"
+                      >
+                        Read paper <ArrowUpRight className="size-4" aria-hidden />
+                      </ExtLink>
+                    )}
                   </div>
-                  <CardTitle className="text-lg sm:text-xl">{r.title}</CardTitle>
-                  <CardDescription className="text-base">{r.summary}</CardDescription>
-                </CardHeader>
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <ul className="flex flex-wrap gap-1.5" aria-label="Topics">
-                    {r.tags.map((t) => (
-                      <li key={t}>
-                        <Badge variant="outline" className="font-mono">{t}</Badge>
-                      </li>
-                    ))}
-                  </ul>
-                  {r.link && (
-                    <ExtLink href={r.link} className="inline-flex items-center gap-1 font-mono text-sm hover:underline">
-                      Read paper <ArrowUpRight className="size-4" aria-hidden />
-                    </ExtLink>
-                  )}
-                </div>
-              </Card>
+                </Card>
+              </Tilt>
             ))}
           </div>
         </Section>
 
         <Section id="projects" command="show projects | begin featured" title="Featured projects">
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="stagger grid gap-4 sm:grid-cols-2">
             {featured.map((p) => (
               <ProjectCard key={p.title} project={p} />
             ))}
@@ -116,37 +140,44 @@ export default function Home() {
         </Section>
 
         <Section id="ventures" command="show ventures" title="Ventures">
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="stagger grid gap-4 sm:grid-cols-2">
             {ventures.map((v) => (
-              <Card key={v.name}>
-                <CardHeader>
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono text-xs text-muted-foreground">{v.place}</span>
-                    {!v.link && <Badge variant="learning">{v.launch}</Badge>}
-                  </div>
-                  <CardTitle className="text-lg">{v.name}</CardTitle>
-                  <CardDescription>{v.summary}</CardDescription>
-                </CardHeader>
-                {v.link && (
-                  <ExtLink href={v.link} className="mt-auto inline-flex items-center gap-1 font-mono text-sm hover:underline">
-                    Visit site <ArrowUpRight className="size-4" aria-hidden />
-                  </ExtLink>
-                )}
-              </Card>
+              <Tilt key={v.name}>
+                <Card>
+                  <CardHeader>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-mono text-xs text-muted-foreground">{v.place}</span>
+                      {!v.link && <Badge variant="learning">{v.launch}</Badge>}
+                    </div>
+                    <CardTitle className="text-lg">{v.name}</CardTitle>
+                    <CardDescription>{v.summary}</CardDescription>
+                  </CardHeader>
+                  {v.link && (
+                    <ExtLink
+                      href={v.link}
+                      className="mt-auto inline-flex items-center gap-1 font-mono text-sm hover:underline"
+                    >
+                      Visit site <ArrowUpRight className="size-4" aria-hidden />
+                    </ExtLink>
+                  )}
+                </Card>
+              </Tilt>
             ))}
           </div>
         </Section>
 
         <Section id="photography" command="show leadership | include camera" title="Photography and leadership">
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="stagger grid gap-4 sm:grid-cols-2">
             {leadership.roles.map((role) => (
-              <Card key={role.title}>
-                <CardHeader>
-                  <span className="font-mono text-xs text-muted-foreground">{role.period}</span>
-                  <CardTitle className="text-lg">{role.title}</CardTitle>
-                  <CardDescription>{role.summary}</CardDescription>
-                </CardHeader>
-              </Card>
+              <Tilt key={role.title}>
+                <Card>
+                  <CardHeader>
+                    <span className="font-mono text-xs text-muted-foreground">{role.period}</span>
+                    <CardTitle className="text-lg">{role.title}</CardTitle>
+                    <CardDescription>{role.summary}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </Tilt>
             ))}
           </div>
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
@@ -163,7 +194,7 @@ export default function Home() {
         </Section>
 
         <Section id="skills" command="show running-config | include skills" title="Skills and certifications">
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="stagger grid gap-4 sm:grid-cols-2">
             {skills.groups.map((group) => (
               <div key={group.name} className="rounded-xl border border-border bg-card p-5">
                 <h3 className="font-mono text-sm text-highlight">{group.name.toLowerCase().replace(/ /g, "-")}</h3>
@@ -188,9 +219,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 font-mono text-xs text-muted-foreground">
-                languages: {skills.languages.join(", ")}
-              </p>
+              <p className="mt-4 font-mono text-xs text-muted-foreground">languages: {skills.languages.join(", ")}</p>
             </div>
           </div>
         </Section>

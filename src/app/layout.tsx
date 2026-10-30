@@ -38,15 +38,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${bricolage.variable} ${plex.variable} ${jetbrains.variable}`}
-    >
+    <html lang="en" suppressHydrationWarning className={`${bricolage.variable} ${plex.variable} ${jetbrains.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="flex min-h-screen flex-col">
+        <div className="scroll-progress" aria-hidden />
         <Header />
         <main id="main" className="flex-1">
           {children}

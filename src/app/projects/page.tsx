@@ -6,7 +6,8 @@ import { ProjectFilter } from "@/components/project-filter";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Networking labs, security assessments, software design and upcoming automation and AWS projects by Shahriar Adnan Ishty.",
+  description:
+    "Networking labs, security assessments, software design and upcoming automation and AWS projects by Shahriar Adnan Ishty.",
 };
 
 export default function ProjectsPage() {

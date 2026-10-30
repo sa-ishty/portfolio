@@ -134,8 +134,145 @@ html.js .reveal.is-visible {
   transform: none;
 }
 
+/* ---------- Motion ---------- */
+
+/* Reading progress bar (browsers with scroll-driven animations). */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 2px;
+  z-index: 50;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--slate), var(--highlight), var(--up));
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: grow-x linear both;
+    animation-timeline: scroll(root);
+  }
+}
+@keyframes grow-x {
+  to { transform: scaleX(1); }
+}
+
+/* Hero: boot lines print one by one, then the rest rises in. */
+html.js .boot-line {
+  animation: boot-print 0.05s linear both;
+}
+html.js .boot-line:nth-child(1) { animation-delay: 0.1s; }
+html.js .boot-line:nth-child(2) { animation-delay: 0.45s; }
+html.js .boot-line:nth-child(3) { animation-delay: 0.8s; }
+@keyframes boot-print {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+html.js .rise {
+  opacity: 0;
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--delay, 0s);
+}
+/* Slides in without hiding, so large text and the photo count as painted right away. */
+html.js .rise-soft {
+  animation: rise-soft 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes rise-soft {
+  from { transform: translateY(18px); }
+  to { transform: none; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+.typing {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  white-space: nowrap;
+  width: 6ch;
+}
+html.js .typing {
+  width: 0;
+  animation: type 0.6s steps(6) 1.05s forwards;
+}
+@keyframes type {
+  to { width: 6ch; }
+}
+
+/* Slow drifting light behind the hero. */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.35;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+html.light .orb { opacity: 0.25; }
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.1); }
+  100% { transform: translate(-30px, 20px) scale(0.95); }
+}
+
+/* Staggered children inside a revealed section. */
+html.js .reveal .stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+html.js .reveal.is-visible .stagger > * {
+  opacity: 1;
+  transform: none;
+}
+.stagger > :nth-child(2) { transition-delay: 70ms !important; }
+.stagger > :nth-child(3) { transition-delay: 140ms !important; }
+.stagger > :nth-child(4) { transition-delay: 210ms !important; }
+.stagger > :nth-child(5) { transition-delay: 280ms !important; }
+.stagger > :nth-child(6) { transition-delay: 350ms !important; }
+.stagger > :nth-child(n + 7) { transition-delay: 420ms !important; }
+
+/* 3D tilt cards. */
+.tilt-wrap { perspective: 900px; }
+.tilt {
+  position: relative;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+.tilt[data-active="true"] { transition-duration: 0.1s; }
+.tilt-glare {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgb(224 225 221 / 0.09), transparent 45%);
+}
+.tilt[data-active="true"] .tilt-glare { opacity: 1; }
+.tilt > [data-slot="card"] { height: 100%; }
+
+/* Skills strip. */
+.marquee-row { animation: marquee 38s linear infinite; }
+.marquee:hover .marquee-row { animation-play-state: paused; }
+@keyframes marquee {
+  to { transform: translateX(-100%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   html.js .reveal { opacity: 1; transform: none; transition: none; }
   .cursor-blink::after { animation: none; }
+  html.js .boot-line, html.js .rise, html.js .rise-soft { opacity: 1; animation: none; }
+  html.js .typing { width: 6ch; animation: none; }
+  .orb, .marquee-row { animation: none; }
+  .marquee { flex-wrap: wrap; mask-image: none; }
+  .marquee-row[aria-hidden] { display: none; }
+  html.js .reveal .stagger > * { opacity: 1; transform: none; transition: none; }
+  .tilt { transform: none; }
 }

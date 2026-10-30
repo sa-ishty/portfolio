@@ -9,7 +9,8 @@ import { gallery, leadership, type Photo } from "@/data";
 
 export const metadata: Metadata = {
   title: "Photography",
-  description: "Photography by Shahriar Adnan Ishty, former president of a photographers' club who organised two national exhibitions.",
+  description:
+    "Photography by Shahriar Adnan Ishty, former president of a photographers' club who organised two national exhibitions.",
 };
 
 // Shown until the real gallery photos are added to src/data/gallery.json.
@@ -46,7 +47,9 @@ export default function PhotographyPage() {
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {leadership.exhibitions.map((ex) => (
               <li key={ex.name} className="rounded-xl border border-border bg-card p-5">
-                <p className="font-mono text-xs text-muted-foreground">{ex.date} · {ex.venue}</p>
+                <p className="font-mono text-xs text-muted-foreground">
+                  {ex.date} · {ex.venue}
+                </p>
                 <h3 className="mt-1 text-lg font-semibold">{ex.name}</h3>
                 {ex.detail && <p className="mt-2 text-sm text-muted-foreground">{ex.detail}</p>}
               </li>

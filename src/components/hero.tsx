@@ -4,6 +4,8 @@ import { ArrowDown, FileText, Mail } from "lucide-react";
 
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import { ExtLink } from "@/components/ext-link";
+import { ScrambleText } from "@/components/scramble-text";
+import { Tilt } from "@/components/tilt";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data";
@@ -18,24 +20,41 @@ const boot = [
 export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-border/60">
-      <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black_40%,transparent_75%)]" aria-hidden />
+      <div
+        className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black_40%,transparent_75%)]"
+        aria-hidden
+      />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+        <span className="orb -top-24 left-[10%] size-[360px] bg-[var(--slate)]" />
+        <span className="orb top-1/3 right-[5%] size-[300px] bg-[var(--steel)] [animation-delay:-6s]" />
+      </div>
       <div className="relative mx-auto grid max-w-5xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-24 md:grid-cols-[1.4fr_1fr]">
         <div>
           <div className="font-mono text-xs leading-relaxed text-muted-foreground" aria-hidden>
             {boot.map((line) => (
-              <p key={line}>{line}</p>
+              <p key={line} className="boot-line">
+                {line}
+              </p>
             ))}
           </div>
           <p className="mt-6 font-mono text-sm">
             <span className="text-up">ishty@dhaka</span>
             <span className="text-muted-foreground">:~$ </span>
-            <span className="cursor-blink">whoami</span>
+            <span className="typing">whoami</span>
+            <span className="cursor-blink" />
           </p>
 
-          <h1 className="mt-3 text-4xl font-bold leading-[1.05] sm:text-6xl">{profile.name}</h1>
-          <p className="mt-5 max-w-xl text-lg text-muted-foreground">{profile.tagline}</p>
+          <h1 className="mt-3 text-4xl font-bold leading-[1.05] sm:text-6xl">
+            <ScrambleText text={profile.name} />
+          </h1>
+          <p
+            className="rise-soft mt-5 max-w-xl text-lg text-muted-foreground"
+            style={{ "--delay": "0.5s" } as React.CSSProperties}
+          >
+            {profile.tagline}
+          </p>
 
-          <div className="mt-6">
+          <div className="rise mt-6" style={{ "--delay": "0.65s" } as React.CSSProperties}>
             <Badge variant="up" className="font-mono">
               <span className="relative flex size-2" aria-hidden>
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-up opacity-60 motion-reduce:hidden" />
@@ -45,7 +64,7 @@ export function Hero() {
             </Badge>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="rise mt-8 flex flex-wrap gap-3" style={{ "--delay": "0.8s" } as React.CSSProperties}>
             <Button asChild size="lg">
               <ExtLink href={profile.links.linkedin!}>
                 <LinkedinIcon /> LinkedIn
@@ -75,27 +94,35 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-xs md:max-w-none">
+        <div
+          className="rise-soft relative mx-auto w-full max-w-xs md:max-w-none"
+          style={{ "--delay": "0.3s" } as React.CSSProperties}
+        >
           <div className="absolute -inset-3 rounded-2xl border border-dashed border-border" aria-hidden />
-          <div className="relative overflow-hidden rounded-xl border border-border bg-card">
-            <Image
-              src={asset("/images/portrait.webp")}
-              alt="Portrait of Shahriar Adnan Ishty in a dark shirt, standing beside a rooftop pool"
-              width={640}
-              height={800}
-              priority
-              sizes="(min-width: 768px) 360px, 80vw"
-              className="h-auto w-full"
-            />
-            <div className="flex items-center justify-between border-t border-border px-3 py-2 font-mono text-[11px] text-muted-foreground">
-              <span>f/1.8 · 50mm · 1/200s · ISO 1000</span>
-              <span>Sony A7 IV</span>
+          <Tilt max={10} className="relative">
+            <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-2xl shadow-black/30">
+              <Image
+                src={asset("/images/portrait.webp")}
+                alt="Portrait of Shahriar Adnan Ishty in a dark shirt, standing beside a rooftop pool"
+                width={640}
+                height={800}
+                priority
+                sizes="(min-width: 768px) 360px, 80vw"
+                className="h-auto w-full"
+              />
+              <div className="flex items-center justify-between border-t border-border px-3 py-2 font-mono text-[11px] text-muted-foreground">
+                <span>f/1.8 · 50mm · 1/200s · ISO 1000</span>
+                <span>Sony A7 IV</span>
+              </div>
             </div>
-          </div>
+          </Tilt>
         </div>
       </div>
       <div className="relative mx-auto hidden max-w-5xl px-6 pb-8 md:block">
-        <a href="#focus" className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground hover:text-foreground">
+        <a
+          href="#focus"
+          className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground hover:text-foreground"
+        >
           <ArrowDown className="size-3.5" aria-hidden /> scroll to explore
         </a>
       </div>

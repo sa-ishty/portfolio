@@ -22,9 +22,15 @@ export function StatusTable() {
         <caption className="sr-only">Focus areas and their current status</caption>
         <thead>
           <tr className="text-left text-muted-foreground">
-            <th scope="col" className="px-4 pt-3 pb-2 font-normal">Interface</th>
-            <th scope="col" className="px-4 pt-3 pb-2 font-normal">Status</th>
-            <th scope="col" className="hidden px-4 pt-3 pb-2 font-normal sm:table-cell">Description</th>
+            <th scope="col" className="px-4 pt-3 pb-2 font-normal">
+              Interface
+            </th>
+            <th scope="col" className="px-4 pt-3 pb-2 font-normal">
+              Status
+            </th>
+            <th scope="col" className="hidden px-4 pt-3 pb-2 font-normal sm:table-cell">
+              Description
+            </th>
           </tr>
         </thead>
         <tbody>

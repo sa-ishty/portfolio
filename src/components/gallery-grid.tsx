@@ -15,7 +15,7 @@ export function GalleryGrid({ photos }: { photos: Photo[] }) {
   const close = useCallback(() => setIndex(null), []);
   const step = useCallback(
     (d: number) => setIndex((i) => (i === null ? i : (i + d + photos.length) % photos.length)),
-    [photos.length]
+    [photos.length],
   );
 
   useEffect(() => {
@@ -83,15 +83,33 @@ export function GalleryGrid({ photos }: { photos: Photo[] }) {
             <figcaption className="font-mono text-xs text-white/70">
               {current.exif ?? current.alt} · {index! + 1}/{photos.length}
             </figcaption>
-            <Button variant="ghost" size="icon" onClick={close} aria-label="Close" className="absolute top-4 right-4 text-white hover:bg-white/10 hover:text-white">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={close}
+              aria-label="Close"
+              className="absolute top-4 right-4 text-white hover:bg-white/10 hover:text-white"
+            >
               <X />
             </Button>
             {photos.length > 1 && (
               <>
-                <Button variant="ghost" size="icon" onClick={() => step(-1)} aria-label="Previous photo" className="absolute left-2 top-1/2 text-white hover:bg-white/10 hover:text-white">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => step(-1)}
+                  aria-label="Previous photo"
+                  className="absolute left-2 top-1/2 text-white hover:bg-white/10 hover:text-white"
+                >
                   <ChevronLeft />
                 </Button>
-                <Button variant="ghost" size="icon" onClick={() => step(1)} aria-label="Next photo" className="absolute right-2 top-1/2 text-white hover:bg-white/10 hover:text-white">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => step(1)}
+                  aria-label="Next photo"
+                  className="absolute right-2 top-1/2 text-white hover:bg-white/10 hover:text-white"
+                >
                   <ChevronRight />
                 </Button>
               </>
