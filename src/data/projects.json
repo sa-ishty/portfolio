@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Network Design and Configuration",
+    "category": "Networking",
+    "summary": "13 Packet Tracer labs: VLANs, inter-VLAN and static routing, DHCP, servers, SSH hardening.",
+    "tags": ["Packet Tracer", "VLANs", "Routing", "DHCP", "SSH"],
+    "link": "https://github.com/sa-ishty/Network-Design-and-Configuration",
+    "featured": true,
+    "upcoming": false
+  },
+  {
+    "title": "Kioptrix Security Assessment Lab",
+    "category": "Security",
+    "summary": "Isolated-lab assessment of a vulnerable Linux host with Nmap, Wireshark and Metasploit.",
+    "tags": ["Nmap", "Wireshark", "Metasploit", "Kali Linux"],
+    "link": "https://github.com/sa-ishty/kioptrix-security-assessment-lab",
+    "featured": true,
+    "upcoming": false
+  },
+  {
+    "title": "Smart Forest Monitoring System",
+    "category": "Software design",
+    "summary": "SRS and UML for an AI and IoT forest monitoring platform.",
+    "tags": ["SRS", "UML", "IoT", "Project management"],
+    "link": "https://github.com/sa-ishty/Smart-Forest-Monitoring-System---SRS-UML-Design-Project-Management",
+    "featured": true,
+    "upcoming": false
+  },
+  {
+    "title": "AI Academic Stress Management System",
+    "category": "Software design",
+    "summary": "Requirements, UI/UX and Scrum planning for an AI-assisted student platform.",
+    "tags": ["Requirements", "UI/UX", "Scrum"],
+    "link": "https://github.com/sa-ishty/ai-academic-stress-management-system",
+    "featured": true,
+    "upcoming": false
+  },
+  {
+    "title": "Network Automation Lab",
+    "category": "Automation",
+    "summary": "Python, Netmiko, Ansible and RESTCONF tools built on Cisco DevNet; capstone health report tool by Feb 2027.",
+    "tags": ["Python", "Netmiko", "Ansible", "RESTCONF"],
+    "link": null,
+    "featured": false,
+    "upcoming": true
+  },
+  {
+    "title": "AWS builds",
+    "category": "Cloud",
+    "summary": "VPC, load balancing, S3 and VPN labs from the AWS plan, 2027.",
+    "tags": ["AWS", "VPC", "S3", "VPN"],
+    "link": null,
+    "featured": false,
+    "upcoming": true
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "summary": "Student-life reels, a weekly AI video, and networking tutorials in Bangla and English.",
+  "series": [
+    { "name": "AI er Itihash", "detail": "The history of AI, told in 10 episodes." },
+    { "name": "Networking tutorials", "detail": "Hands-on networking lessons in Bangla and English." }
+  ],
+  "videos": []
+}

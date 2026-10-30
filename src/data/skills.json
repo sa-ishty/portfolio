@@ -1,0 +1,14 @@
+{
+  "groups": [
+    { "name": "Networking", "items": ["TCP/IP", "IPv4 and IPv6", "VLSM", "VLANs", "DHCP", "NAT", "ACLs", "Cisco IOS", "Packet Tracer"] },
+    { "name": "Security", "items": ["Vulnerability assessment", "Penetration testing", "Nmap", "Metasploit", "Wireshark", "Kali Linux"] },
+    { "name": "Machine learning", "items": ["Feature selection", "Random Forest", "Decision Tree", "XGBoost", "SHAP"] },
+    { "name": "Programming", "items": ["Python", "C++", "Java", "C#", "JavaScript", "SQL", "LaTeX"] },
+    { "name": "Creative", "items": ["Photography", "Cinematography", "Premiere Pro", "Photoshop", "Illustrator"] }
+  ],
+  "certifications": [
+    { "name": "CCNA: Introduction to Networks", "issuer": "Cisco Networking Academy", "date": "Aug 2026" },
+    { "name": "IT Essentials", "issuer": "Cisco Networking Academy", "date": "May 2023" }
+  ],
+  "languages": ["English (fluent)", "Bangla (native)"]
+}

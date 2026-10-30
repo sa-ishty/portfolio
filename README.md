@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shahriar Adnan Ishty · Portfolio
 
-## Getting Started
+Personal portfolio of Shahriar Adnan Ishty, network engineer intern at the AIUB IT Department. The site reads like a Cisco console: every section opens with the IOS command that would show it.
 
-First, run the development server:
+Built with Next.js (App Router), TypeScript, Tailwind CSS and shadcn/ui. Hosted on Vercel.
+
+## Run it locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Update the content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All text lives in `src/data/`. Adding a project, video or milestone means editing one JSON file, never the layout code.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| To change | Edit |
+| --- | --- |
+| Name, links, email, CV | `src/data/profile.json` |
+| Focus areas table | `src/data/focus.json` (`status`: up, in progress, learning, planned) |
+| Projects | `src/data/projects.json` (`featured: true` shows it on the home page) |
+| Learning journey | `src/data/journey.json` (`status`: done, now, next) |
+| Videos and series | `src/data/content.json` |
+| Gallery photos | put files in `public/gallery/`, list them in `src/data/gallery.json` |
+| Exhibitions, roles, gear | `src/data/leadership.json` |
+| Experience, education, research, ventures, skills | the matching JSON file |
 
-## Learn More
+To add the CV, put it at `public/cv.pdf` and set `"cv": "/cv.pdf"` in `profile.json`.
 
-To learn more about Next.js, take a look at the following resources:
+Example gallery entry:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```json
+{ "src": "/gallery/sunset.webp", "alt": "Sunset over the Buriganga", "width": 1600, "height": 1067, "exif": "f/4 · 50mm · 1/500s · Dhaka" }
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Theme
 
-## Deploy on Vercel
+Colors come from [this palette](https://coolors.co/palette/0d1b2a-1b263b-415a77-778da9-e0e1dd) and are defined once in `src/app/globals.css`. Dark is the default; the toggle in the header switches to light and remembers the choice.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Import this repo at [vercel.com/new](https://vercel.com/new). Vercel detects Next.js, so the defaults work. Every push to `main` redeploys.

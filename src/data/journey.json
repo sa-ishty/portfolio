@@ -1,0 +1,11 @@
+[
+  { "date": "Aug 2026", "title": "CCNA: Introduction to Networks", "detail": "Completed with Cisco Networking Academy.", "status": "done" },
+  { "date": "Sep 2026", "title": "Network Engineer Intern, AIUB IT Department", "detail": "Hands-on with a production Cisco campus network.", "status": "now" },
+  { "date": "Nov 2026", "title": "Python basics", "detail": "Scripting foundations for network automation.", "status": "next" },
+  { "date": "Dec 2026", "title": "Netmiko and config backups", "detail": "Automated SSH sessions and configuration backups.", "status": "next" },
+  { "date": "Jan 2027", "title": "Ansible", "detail": "Playbooks for repeatable network changes.", "status": "next" },
+  { "date": "Feb 2027", "title": "REST APIs and capstone", "detail": "RESTCONF and a network health report tool.", "status": "next" },
+  { "date": "Feb 2027", "title": "CCNA exam", "detail": "Cisco Certified Network Associate.", "status": "next" },
+  { "date": "Apr 2027", "title": "AWS Cloud Practitioner", "detail": "Cloud fundamentals certification.", "status": "next" },
+  { "date": "Jun 2027", "title": "AWS Solutions Architect Associate", "detail": "Designing networks and systems on AWS.", "status": "next" }
+]

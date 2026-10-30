@@ -1,0 +1,9 @@
+[
+  { "interface": "Networking", "status": "up", "description": "VLANs, routing, DHCP, IPv6, Cisco IOS" },
+  { "interface": "Security", "status": "up", "description": "Vulnerability assessment, traffic analysis" },
+  { "interface": "ML research", "status": "up", "description": "Explainable intrusion detection, AI code risk" },
+  { "interface": "CCNA", "status": "in progress", "description": "Introduction to Networks done Aug 2026; exam Feb 2027" },
+  { "interface": "Automation", "status": "learning", "description": "Python, Netmiko, Ansible, RESTCONF" },
+  { "interface": "AWS", "status": "planned", "description": "Cloud Practitioner, then Solutions Architect Associate (2027)" },
+  { "interface": "Photography", "status": "up", "description": "Two national exhibitions organised" }
+]

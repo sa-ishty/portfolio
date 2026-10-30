@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Home, building and office automation",
+    "place": "Bangladesh",
+    "launch": "Coming 2027",
+    "summary": "Smart homes on a local Home Assistant server, building automation (number-plate garage gates, intercom on the home display, sensors), and office services (enterprise networking, fingerprint, face and NFC attendance and door access).",
+    "link": null
+  },
+  {
+    "name": "Tutoring platform",
+    "place": "Name to be decided",
+    "launch": "Coming 2027",
+    "summary": "Tutorials, guidelines and documentation that help Bangladeshi students abroad learn and complete their own assignments.",
+    "link": null
+  }
+]

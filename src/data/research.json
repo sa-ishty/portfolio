@@ -1,0 +1,18 @@
+[
+  {
+    "title": "An Explainable AI Framework for Predicting and Prioritizing Security Risks in AI-Generated Software Code",
+    "type": "Undergraduate thesis",
+    "status": "In progress",
+    "summary": "Detects vulnerabilities in AI-generated code, classifies them by CWE type, scores and ranks risk, and explains each prediction. Evaluated on DiverseVul and AI-generated C functions; IEEE conference format.",
+    "tags": ["Explainable AI", "CWE", "DiverseVul", "Code security"],
+    "link": null
+  },
+  {
+    "title": "Performance-Preserving Feature Selection for Explainable Multiclass Intrusion Detection on CICIDS2017",
+    "type": "Research paper",
+    "status": "In progress",
+    "summary": "Random Forest, Decision Tree and XGBoost with feature selection that keeps accuracy, and SHAP explanations for each prediction.",
+    "tags": ["Intrusion detection", "XGBoost", "SHAP", "CICIDS2017"],
+    "link": null
+  }
+]
