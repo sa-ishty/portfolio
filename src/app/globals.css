@@ -17,7 +17,7 @@
   --card: var(--navy);
   --card-foreground: var(--mist);
   --muted: #16223a;
-  --muted-foreground: var(--steel);
+  --muted-foreground: #8a9fba; /* steel, lifted slightly for 4.5:1 contrast on cards */
   --primary: var(--mist);
   --primary-foreground: var(--ink);
   --secondary: var(--slate);
