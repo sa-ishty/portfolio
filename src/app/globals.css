@@ -257,6 +257,95 @@ html.js .reveal.is-visible .stagger > * {
 .tilt[data-active="true"] .tilt-glare { opacity: 1; }
 .tilt > [data-slot="card"] { height: 100%; }
 
+/* Hero cutout portrait in 3D. */
+:root { --glow: 119 141 169; --glow-strong: 159 180 207; }
+html.light { --glow: 65 90 119; --glow-strong: 65 90 119; }
+
+.portrait-layer {
+  position: absolute;
+  inset: 0;
+  transform: translateZ(var(--z, 0));
+  transform-style: preserve-3d;
+}
+.portrait-halo {
+  background: radial-gradient(circle at 50% 45%, rgb(var(--glow) / 0.55), rgb(var(--glow) / 0.12) 45%, transparent 70%);
+  filter: blur(6px);
+  animation: halo-breathe 6s ease-in-out infinite;
+}
+html.light .portrait-halo {
+  background: radial-gradient(circle at 50% 45%, rgb(var(--glow) / 0.35), rgb(var(--glow) / 0.08) 45%, transparent 70%);
+}
+@keyframes halo-breathe {
+  50% { transform: translateX(-50%) scale(1.06); opacity: 0.85; }
+}
+.portrait-orbit {
+  color: rgb(var(--glow-strong) / 0.7);
+  animation: spin 40s linear infinite;
+}
+@keyframes spin {
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+.portrait-floor { transform-style: preserve-3d; }
+.portrait-floor-ring,
+.portrait-floor-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+.portrait-floor-ring {
+  border: 1.5px solid rgb(var(--glow-strong) / 0.7);
+  box-shadow: 0 0 18px rgb(var(--glow) / 0.6), inset 0 0 18px rgb(var(--glow) / 0.45);
+}
+.portrait-floor-ring--inner {
+  inset: 22% 18%;
+  border-style: dashed;
+  opacity: 0.7;
+  animation: floor-pulse 3s ease-in-out infinite;
+}
+@keyframes floor-pulse {
+  50% { transform: scale(1.12); opacity: 0.3; }
+}
+.portrait-floor-glow {
+  inset: 15% 20%;
+  background: radial-gradient(ellipse at center, rgb(0 0 0 / 0.55), transparent 70%);
+}
+html.light .portrait-floor-glow {
+  background: radial-gradient(ellipse at center, rgb(13 27 42 / 0.35), transparent 70%);
+}
+
+/* Rim light, outer glow and drop shadow, all following the cutout's own outline. */
+.portrait-cutout {
+  filter:
+    drop-shadow(0 0 1px rgb(var(--glow-strong) / 0.9))
+    drop-shadow(0 0 14px rgb(var(--glow) / 0.65))
+    drop-shadow(0 0 38px rgb(var(--glow) / 0.35))
+    drop-shadow(18px 26px 22px rgb(0 0 0 / 0.55));
+}
+html.light .portrait-cutout {
+  filter:
+    drop-shadow(0 0 1px rgb(var(--glow-strong) / 0.6))
+    drop-shadow(0 0 16px rgb(var(--glow) / 0.35))
+    drop-shadow(16px 24px 20px rgb(13 27 42 / 0.35));
+}
+
+.portrait-chip {
+  transform: translateZ(var(--z, 40px));
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 80%, transparent);
+  backdrop-filter: blur(6px);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.25), 0 0 0 1px rgb(var(--glow) / 0.08);
+  animation: bob 6s ease-in-out infinite;
+}
+@keyframes bob {
+  50% { transform: translateZ(var(--z, 40px)) translateY(-8px); }
+}
+.hero-portrait .tilt-glare { display: none; }
+
 /* Skills strip. */
 .marquee-row { animation: marquee 38s linear infinite; }
 .marquee:hover .marquee-row { animation-play-state: paused; }
@@ -270,7 +359,7 @@ html.js .reveal.is-visible .stagger > * {
   .cursor-blink::after { animation: none; }
   html.js .boot-line, html.js .rise, html.js .rise-soft { opacity: 1; animation: none; }
   html.js .typing { width: 6ch; animation: none; }
-  .orb, .marquee-row { animation: none; }
+  .orb, .marquee-row, .portrait-halo, .portrait-orbit, .portrait-floor-ring--inner, .portrait-chip { animation: none; }
   .marquee { flex-wrap: wrap; mask-image: none; }
   .marquee-row[aria-hidden] { display: none; }
   html.js .reveal .stagger > * { opacity: 1; transform: none; transition: none; }

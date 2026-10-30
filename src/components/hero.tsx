@@ -1,15 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, FileText, Mail } from "lucide-react";
 
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import { ExtLink } from "@/components/ext-link";
+import { HeroPortrait } from "@/components/hero-portrait";
 import { ScrambleText } from "@/components/scramble-text";
-import { Tilt } from "@/components/tilt";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data";
-import { asset } from "@/lib/utils";
 
 const boot = [
   "Booting IOS-XE (ishty-portfolio) ...",
@@ -98,24 +96,7 @@ export function Hero() {
           className="rise-soft relative mx-auto w-full max-w-xs md:max-w-none"
           style={{ "--delay": "0.3s" } as React.CSSProperties}
         >
-          <div className="absolute -inset-3 rounded-2xl border border-dashed border-border" aria-hidden />
-          <Tilt max={10} className="relative">
-            <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-2xl shadow-black/30">
-              <Image
-                src={asset("/images/portrait.webp")}
-                alt="Portrait of Shahriar Adnan Ishty in a dark shirt, standing beside a rooftop pool"
-                width={640}
-                height={800}
-                priority
-                sizes="(min-width: 768px) 360px, 80vw"
-                className="h-auto w-full"
-              />
-              <div className="flex items-center justify-between border-t border-border px-3 py-2 font-mono text-[11px] text-muted-foreground">
-                <span>f/1.8 · 50mm · 1/200s · ISO 1000</span>
-                <span>Sony A7 IV</span>
-              </div>
-            </div>
-          </Tilt>
+          <HeroPortrait />
         </div>
       </div>
       <div className="relative mx-auto hidden max-w-5xl px-6 pb-8 md:block">
